@@ -1,0 +1,61 @@
+<div class="row bd">
+    <div class="col-xs-3 col-sm-3 col-md-3 hleft">
+            <%= render 'listed/left_panel' %>
+    </div>
+    <div class="col-xs-9 col-sm-9 col-md-9 member">
+                <header class="row">
+                    <div class="col-xs-10 col-sm-10 col-md-10">
+                    <h5><%= session[:channel_name] %></h5>
+                    <%= link_to "Channel Member List", memberlist_path, class: "mlink" %>
+                    </div>
+                </header>
+
+                <div class="row dframe"> 
+                <br>
+                <% if @member_list_count.map(&:userid).include? session[:muser_id] %>
+                    <%= render 'listed/channelrefresh' %>
+                <% else %>
+                    <%= render 'listed/public_channel' %>
+                <% end %>
+                </div>
+                
+                
+                <% if @member_list_count.map(&:userid).include? session[:muser_id] %>
+                    
+                    <div class="row footer">
+                    <%= form_for(:tchamsg,url:msgsend_path) do |f| %>
+                        <%= f.text_area :msg ,class:"col-xs-10 col-sm-10 col-md-10 tatag", autofocus: true,data: { autocomplete_source: @channeluser.order(:user_name).map { |t| 
+                        { :label => '@' + t.user_name} } }, id: 'tags' %>                   
+                        <div class="col-xs-2 col-sm-2 col-md-2">
+                            <%= f.submit "Send",class: "btn btn-primary btnsent"%>
+                            <%= f.hidden_field :memtion_name, class:'memtion_name' %>
+                        </div>
+                    <% end %>
+                    </div>
+                <% else %>
+                    
+                    <div class="row footer">
+                    <%= form_for(:dirmsg,url:dirmsgsend_path) do |f| %>
+                        <%= f.text_area :msg ,class:"col-xs-10 col-sm-10 col-md-10 tatag disabled"%>                 
+                        <div class="col-xs-2 col-sm-2 col-md-2">
+                            <%= f.submit "Send",class: "btn btn-primary btnsent disabled"%>
+                        </div>
+                    <% end %>
+                    </div>
+                <% end %>
+    </div>        
+</div>
+<script>
+ $( "#tags" ).autocomplete({
+      source: $('#tags').data('autocomplete-source'),
+      position: {
+        my: "left bottom",
+        at: "left top",
+    },
+    select: function(event, ui) {
+      event.preventDefault();
+      this.value = ui.item.label
+      $('.memtion_name').val(ui.item.value)
+    }
+    });
+</script>

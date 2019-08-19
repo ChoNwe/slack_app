@@ -1,0 +1,2 @@
+class HDirectMsgThread < ApplicationRecord
+end

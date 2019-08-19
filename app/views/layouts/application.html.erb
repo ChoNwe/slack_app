@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+ 
+    <title>SlackApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+
+  <body>  
+  
+  <div>
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+  <%= yield %>
+  <% unless session[:workspace_id].nil?%>
+      <script>
+      $(document).ready(function () {
+          // will call refreshPartial every 10 seconds
+          setInterval(refreshPartial, 10000)
+
+      });
+
+      // calls action refreshing the partial
+      function refreshPartial() {
+        $.ajax({
+          url: "/refresh"
+      })
+      }
+
+     
+      </script>
+    <% end%>
+  
+  </div>
+  </body>
+
+</html>

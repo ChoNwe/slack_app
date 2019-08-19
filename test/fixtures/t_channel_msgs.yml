@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  channel_id: 1
+  sender_id: 1
+  channel_msg: MyString
+  replier_id: 1
+  parent_msg_id: 1
+  thread_msg: MyString
+
+two:
+  channel_id: 1
+  sender_id: 1
+  channel_msg: MyString
+  replier_id: 1
+  parent_msg_id: 1
+  thread_msg: MyString

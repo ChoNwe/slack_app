@@ -1,0 +1,45 @@
+
+    <div class="row bd">
+        <div class="col-xs-3 col-sm-3 col-md-3 hleft">
+            <%= render 'listed/left_panel' %>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 member">
+           
+                <header class="row">
+                    <div class="col-xs-10 col-sm-10 col-md-10">
+                    <h3><%= "Star" %></h3>
+                    </div>
+                </header>
+                <div class="dframe">
+                    <br>
+                    <ul>
+                    <% @show_ch_msgstr.each do |ch_strmsg|%>
+                        <li>
+                            <span><b><%= ch_strmsg.user_name %></b></span>
+                            <span><%= (ch_strmsg.created_at).strftime('%B %d %Y, %l:%M%P') %></span>
+                            </br>
+                            <span><%= ch_strmsg.channel_msg %></span>
+                            </br>
+                            <span><b> <%= '#'+ch_strmsg.channel_name %></b></span>
+                        </li>    
+                    <% end %>
+                    </ul>
+                    <ul>
+                    <% @show_dir_msgstr.each do |dir_strmsg|%>
+                        <li>
+                        <span><b> <%= dir_strmsg.user_name %></b></span> 
+                        <span><%= (dir_strmsg.created_at).strftime('%B %d %Y, %l:%M%P') %></span>
+                        <br>
+                        <span> <%= dir_strmsg.message %></span>
+                        <br>
+                        <span><b> <%= "direct message" %></b></span>
+                        <br>
+                        </li>
+                    <% end %>
+                    </ul>    
+                </div>
+                
+             
+        </div>
+    </div>
+

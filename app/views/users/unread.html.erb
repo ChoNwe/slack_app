@@ -1,0 +1,95 @@
+
+    <div class="row bd">
+        <div class="col-xs-3 col-sm-3 col-md-3 hleft">
+            <%= render 'listed/left_panel' %>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 member">
+                <header class="row">
+                    <div class="col-xs-10 col-sm-10 col-md-10">
+                        <h5>All Unreads</h5>
+                        <span><%= pluralize((@all_ch_un_count+@all_dir_un_count), "new message") %><span>
+                    </div>
+                </header>
+
+                <div class="dframe">
+                <br>
+                <% @channel_id.each do |channelid|%>
+                    <div class="row">
+                    <% @channel_count.each do |channel|%>
+                        <% if channelid.id == channel.channel_id %>
+                            <div class="col-xs-6  col-sm-6 col-md-8">
+                                <span><b><%= channelid.channel_name  %><i class="fa fa-caret-down"></i></b></span>  
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-4">
+                                <span><%= pluralize(channel.count, "message") %><span>
+                                <%= link_to "Mark as Read", unread_path(:channel_id => channel.channel_id),method: :patch, :class => "btn btn-primary" %>
+                            </div>
+                            
+                        <% end %>
+                    <% end %>
+                    </div>
+                        <ul>
+                            <% @all_channel_unread.each do |ch_unread|%>   
+                                <% if channelid.id == ch_unread.channel_id %>
+                                    <li>
+                                        <span><b><%= ch_unread.user_name%></b></span>
+                                        <span><%= (ch_unread.created_at).strftime('%B %d %Y, %l:%M%P') %></span>
+                                        </br>
+                                        <span><%= ch_unread.channel_msg%></span>
+                                    </li>
+                                <% end %>
+                            <% end %> 
+                        </ul>    
+                <% end %>  
+    
+                    <% @dir_count.each do |dir_unread|%>
+                        
+                        <div class="row">
+                            <br>
+                            
+                            <div class="col-xs-6 col-sm-6 col-md-8 ">
+                                <span><b><%= dir_unread.user_name  %><i class="fa fa-caret-down"></i></b></span>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-4">
+                                <span><%= pluralize(dir_unread.count, "message") %><span>
+                                <%= link_to "Mark as Read", unread_path(:sender_id => dir_unread.id),method: :patch, :class => "btn btn-primary btnunread" %>
+                               
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-xs-10 col-sm-10 col-md-10">
+                                <ul>
+                                <% @all_dir_unread.each do |all_unread_dir|%>   
+                                    <% if (all_unread_dir.sender_id == dir_unread.id)  %>                                       
+                                        <li>
+                                            <span><b><%= all_unread_dir.user_name  %></b></span>
+                                            <span><%= (all_unread_dir.created_at).strftime('%B %d %Y, %l:%M%P')  %></span><br>
+                                            <span><%= all_unread_dir.message  %></span>
+                                        </li>
+                                    <% end %>
+                                    <% end %>
+                                </ul>
+                            </div>
+                        </div>
+                    
+                    <% end %>
+                    
+                    
+                    <% if ((@all_ch_un_count+@all_dir_un_count) != 0)  %>
+                    
+                        <div class="row footer">
+                            <div class="col-xs-6 col-sm-6 col-md-4 col-xs-offset-4 col-sm-offset-4 col-md-offset-4"> 
+                                <%= link_to "Mark All Messages Read", unreadall_path,method: :patch, :class => "btn btn-primary btnallunread" %>
+                            </div>    
+                        </div>
+                    <% end %>
+                </div>
+                
+                
+                
+        </div> 
+     
+    </div>
+
+

@@ -1,0 +1,23 @@
+<% provide(:title, 'MemberInvite') %>
+
+<div class="container memberinvite">
+<div>
+  <h1>Invite Member to <b><%= session[:workspace_name] %></b></h1>
+  <br><br>
+</div>
+<div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3 text-left">
+<%= form_for(:invite,url: invitesuccess_path) do |f| %>
+  <%= f.label :EmailAddress1,"Email Address:" %><br>
+  <%= f.email_field :email1,value:"name@example.com", class: "form-control" %><br>
+  <%= f.label :EmailAddress2,"Email Address:" %><br>
+  <%= f.email_field :email2,value:"name@example.com", class: "form-control" %><br>
+  <%= f.label :EmailAddress3,"Email Address:" %><br>
+  <%= f.email_field :email3,value:"name@example.com", class: "form-control" %><br>
+  <%= f.submit "Send Invitations", class:"btn btn-primary btn-lg" %>  
+<% end %>  
+
+</div>
+
+
+
+

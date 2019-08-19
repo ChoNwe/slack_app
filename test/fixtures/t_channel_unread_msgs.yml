@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  channel_msg_id: 1
+  unread_user_id: 1
+  unread: false
+
+two:
+  channel_msg_id: 1
+  unread_user_id: 1
+  unread: false

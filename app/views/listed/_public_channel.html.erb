@@ -1,0 +1,20 @@
+<div class="dframe" id="publicchannel">
+<ul>   
+<% @channel_msg.each do |channelmsg|%>
+    <b><%= channelmsg.user_name %></b>
+    <%= (channelmsg.created_at).strftime('%B %d %Y, %l:%M%P') %> 
+    </br>
+    <%= channelmsg.channel_msg %>
+    <%= link_to "", channelthread_url(:channel_thread_id => channelmsg.id), :class => "fa fa-envelope" %>
+    <% @ch_thread_count.each do |channelmsgthread|%>
+        <% if channelmsg.id == channelmsgthread.parent_msg_id %>
+            <%= channelmsgthread.count %>
+        <% end %>
+    <% end %>
+    <%= link_to "",chastar_path(:t_cha_star_id => channelmsg.id), class: "glyphicon glyphicon-star-empty" %>
+<%= link_to "Delete", "#" %>
+<br>
+<% end %>
+    
+</ul>
+</div>

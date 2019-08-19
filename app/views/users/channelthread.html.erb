@@ -1,0 +1,68 @@
+
+    <div class="row bd">
+        <div class="col-xs-3 col-sm-3 col-md-3 hleft">
+            <%= render 'listed/left_panel' %>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 member">
+           
+            <header class="row">
+                <div class="col-xs-10 col-sm-10 col-md-10">
+                    <h3><%= session[:channel_name] %></h3>
+                </div>
+            </header>
+
+            <div class="row dframe">
+                <br>  
+                    <h4><%= "Origin" %> </h4>
+                    <ul>
+                    <% @channel_original_msg.each do |original|%>
+                        <li>
+                            <b><%= original.user_name %></b>
+                            Posted <%= time_ago_in_words(original.created_at) %> ago.
+                            </br>
+                            <%= original.channel_msg %>
+                        </li>    
+                    <% end %>
+                    </ul> 
+                    
+                    <h4><%= "Reply" %></h4> 
+                    <ul> 
+                    <% @channel_thread_msg.each do |thread|%>
+                        <li>
+                            <b><%= thread.user_name %></b>
+                             <%= (thread.created_at).strftime('%B %d %Y, %l:%M%P') %>
+                            </br>
+                            <%= thread.thread_msg %>
+                        </li>    
+                    <% end %>
+                    </ul>
+                    
+                    </ul> 
+            </div>
+                
+            
+
+            <% if @member_list_count.map(&:userid).include? session[:muser_id] %>
+            <div class="row footer">
+                <%= form_for(:channelthread,url:channelthreadinsert_path) do |f| %>              
+                    <%= f.text_area :msg ,class:"col-xs-10 col-sm-10 col-md-10 tatag", autofocus: true %>                   
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <%= f.submit "Send",class: "btn btn-primary btnsent"%>
+                    </div>
+                <% end %>
+            </div>
+            <% else %>
+            <div class="row footer">
+                <%= form_for(:channelthread,url:channelthreadinsert_path) do |f| %>              
+                    <%= f.text_area :msg ,class:"col-xs-10 col-sm-10 col-md-10 tatag"%>                   
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <%= f.submit "Send",class: "btn btn-primary btnsent disabled"%>
+                    </div>
+                <% end %>
+            </div>
+            <% end %>
+
+        </div>
+    </div>
+
+

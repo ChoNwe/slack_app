@@ -1,0 +1,17 @@
+<% provide(:title, 'New WorkSpace') %>
+
+<div class="row new_workspace">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3  col-sm-offset-3 col-md-offset-3">
+  <h1>New WorkSpace</h1>
+  <br><br>
+  <%= form_for( :mworkspace, url: workspacecreate_path) do |f| %>
+    <%= render 'shared/error1_messages' %>
+      <%= f.label :workspace_name, "New WorkSpace:" %>
+      <%= f.text_field :workspace_name, class: "form-control" %>     
+      <%= f.submit "Next", class:"btn btn-primary btn-lg btn-block"  %>
+      <% end %>
+  </div>
+  </div>
+  
+  
+  

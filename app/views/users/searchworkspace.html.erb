@@ -1,0 +1,19 @@
+<% provide(:title, "Search Your WorkSpace") %>
+
+<div class="row searchworkspace">
+  <div class="col-xs-8 col-sm-8 col-md-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2">
+  <h1>Search Your WorkSpace</h1>
+  <br><br>
+  <%= form_for(:workspace, url: searchworkspace_path) do |f| %>
+      <%= f.label :workspace_name, "Workspace Name:" %>
+      <%= f.text_field :workspace_name, class: "form-control" %>    
+      <%= f.label :email, "Email:" %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password, "Password:" %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.submit "Search", class:"btn btn-primary btn-lg btn-block" %>
+      <% end %>
+  </div>
+  </div>

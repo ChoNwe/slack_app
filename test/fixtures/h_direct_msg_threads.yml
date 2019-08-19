@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dir_msg_id: 1
+  user_id: 1
+  thread_msg: MyString
+  unread: false
+
+two:
+  dir_msg_id: 1
+  user_id: 1
+  thread_msg: MyString
+  unread: false

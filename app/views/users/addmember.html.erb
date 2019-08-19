@@ -1,0 +1,42 @@
+    <div class="row bd">
+        <div class=" col-xs-3 col-sm-3 col-md-3 hleft">
+            <%= render 'listed/left_panel' %>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 member">         
+            <header class="row">
+                <div class="col-xs-10 col-sm-10 col-md-10">
+                    <h5><%= session[:channel_name] %></h5>
+                    <%= link_to "Channel Member List", memberlist_path, class: "mlink" %>
+                </div> 
+            </header>
+            <div class="addmember dframe">
+                <br>
+                    <div class="row">
+                        <div class="col-xs-9 col-sm-9 col-md-4 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
+                            <h4>Add Member from <%= session[:workspace_name]%></h4>
+                        </div>        
+                    </div>
+                    
+                    <div class="row">
+                        
+                            <% @muser.each do |muser|%>
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
+                                    <%= muser.user_name %>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-4">
+                                    <% if @exist.map(&:user_id).include? muser.id %>            
+                                    <%= link_to "Already Exist",'#',class: "btn btn-warning disabled btnAdd" %>
+                            
+                                    <% else %>
+                                    <%= link_to 'Add', memberadd_url(:user_id => muser.id),class: "btn btn-primary btnAdd" %>
+                                    
+                                    <% end %> 
+                                </div>        
+                                <br><br><br>
+                            <% end %>
+                        
+                    </div>               
+            </div>           
+        </div>
+    </div>
+

@@ -1,0 +1,26 @@
+<div class="dframe"  id="refreshmessage">
+                <br>
+                <ul>
+                    <% @dir_msg_all.each do |dirmsgall|%>
+                    <li id="one">
+                        <b><%= dirmsgall.s %></b>
+                         <%= (dirmsgall.created_at).strftime('%B %d %Y, %l:%M%P') %> 
+                        </br>
+                        <%= dirmsgall.message %>
+                        <%= link_to "", dirthread_url(:dir_thread_id => dirmsgall.id), :class => "fa fa-envelope" %>
+                        <% @dir_thread_count.each do |dirmsgthread|%>
+                        <% if dirmsgall.id == dirmsgthread.dir_msg_id %>
+                        <%= dirmsgthread.count %>
+                        <% end %>
+                        <% end %>
+                        <% if @t_dirstarids.include?dirmsgall.id %>    
+                            <%= link_to "",dirunstar_path(:t_dir_star_id => dirmsgall.id), class: "glyphicon glyphicon-star" %>
+                            <% else %>
+                            <%= link_to "",dirstar_path(:t_dir_star_id => dirmsgall.id), class: "glyphicon glyphicon-star-empty" %>
+                        <% end %>
+                        <%= link_to "Delete", dirdelete_path(:t_dir_star_id => dirmsgall.id) %>
+                    </li>    
+                 <% end %>
+                </ul>
+                
+</div> 

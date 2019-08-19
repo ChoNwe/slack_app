@@ -1,0 +1,3 @@
+class TChannelUnreadMsg < ApplicationRecord
+  
+end

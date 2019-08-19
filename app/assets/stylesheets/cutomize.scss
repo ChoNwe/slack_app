@@ -1,0 +1,565 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+ 
+}
+
+@media screen and (min-width: 950px) {
+  
+  
+}
+
+.bd{
+    min-height: 100%;
+    margin: 0;
+    padding: 0px;
+    /* home/list info */
+    .details{
+        min-height: 100%;
+        width: 100%;
+        
+        color: white;
+        float: right;
+        
+        .bmsg{
+            background-color: red;
+        }
+        .btnDrop{
+            
+            width: 100%;
+            
+            ul{
+                background-color: rgb(123, 71, 165);
+                text-align: left;
+                border:1px solid white;
+
+                li{
+                    
+                    .alink{
+                        color: white;
+                    }
+                    .alink:hover{
+                        background-color: rgb(67, 14, 110);
+                    }
+                }
+
+            }
+
+            .wlink{
+                width: 100%;
+                text-decoration: none;
+                color: white;
+                
+            }
+            .wname{
+              font-size: 1.7vw;
+          }
+
+            
+        }
+
+        
+
+        .alink{
+          font-size: 1.8vw;
+          color: white; 
+        }  
+        .alink:hover{
+          text-decoration: none;
+        }
+        .alink:active{
+          text-decoration: none;
+        }
+        .alink:visited{
+          text-decoration: none;
+        }
+        .name:hover{
+          background-color: rgb(67, 14, 110);
+        }
+        
+        hr{
+          border-color:  rgb(217, 176, 250);
+        }
+        
+        .thread{
+          color: white;
+          font-size: 1.5vw;
+        }
+        .unread{
+          color: white;
+          font-size: 1.5vw;
+        }
+        .star{
+          color: white;
+          font-size: 1.5vw;
+        }
+
+        .mention{
+          color: white;
+          font-size: 1.5vw;
+        }
+        .btnms{
+          float: right;
+          margin-top: 0.4em;
+        }
+        .channel{
+          
+          ul li{
+            list-style-type: none;
+          }
+          .btnchdel{
+            float: right;
+            color: red;
+            margin-top: 0.4em;
+          }
+          
+          h3{
+            font-size: 2vw; 
+          }
+        }
+        .iplus{
+          float: right;
+        }
+        .iplus:hover{
+          text-decoration: none;
+        }
+        .iplus:active{
+          text-decoration: none;
+        }
+        .iplus:visited{
+          text-decoration: none;
+        }
+        
+      
+        .dmemberinvite{
+          font-size: 1.7vw;
+          h3{
+            font-size: 2vw; 
+          }
+        }
+        .memberlist2{
+          font-size: 1.7vw;
+          h3{
+            font-size: 2vw; 
+          }
+          .mname{
+            margin-left: 2vw;
+          }
+        }
+        
+        .addmember{
+            li{
+                list-style-type: none;
+                font-size: 17px;
+            }
+            ul li::before{
+                content: "\2022";
+                color: green;
+                font-weight: bold;
+                display: inline-block; 
+                font-size: 20px;
+                width: 1em; /* Also needed for space (tweak if needed) */
+                margin-left: -1em;
+            
+            }
+        }
+
+
+    }/* EOF home/list info */
+
+    .hleft{
+        min-height: 100vh;
+        overflow-y: auto;
+        background-color: rgb(91, 39, 133);
+        border: 1px solid black;
+    }
+
+    .home{
+      padding-top: 50px;
+      p{
+        font-size: 18px;
+        margin: 0 auto;
+        text-align: justify;
+        width: 40%;
+      }
+      
+    }
+    header{
+        min-width: 100%;
+        margin-left: 0%;
+        background-color: rgb(158, 157, 157);
+        height: 12vh;
+        color: black;
+
+        .mlink{
+            color: black;
+            margin-top: 0.7em;
+        }
+        
+    }
+    .footer {
+        bottom: 0;
+        margin-left: 1%;
+        text-align: left;
+        min-width: 99%;
+        height: 6vh;
+        padding-left: 0px; 
+        position: absolute;
+        
+        .tatag{
+                  
+                  height: 5vh;
+                  border:1px solid black;
+                  border-radius: 5px;
+                  
+              }
+      
+        .btnsent{
+                  width: 100%;
+                  height: 5vh;
+                  float: left;
+              }
+
+      }
+
+      
+      .member{
+        /* header */
+        min-height: 100vh;
+        margin-left: 0px;
+        padding-left: 0%;
+        background-color: lightgrey;
+
+        .dframe{
+            
+            float: left;
+            min-width: 100%;
+            height: 81vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            margin-left: 0%;
+      
+            h3{
+                font-size: 15px;
+            }
+            li{
+                list-style-type: none;
+            }
+
+            .btnallunread{
+                width: 100%;
+            }
+        }
+
+        /* home/memberlist1 */
+        .memberlist1{
+            min-width: 100%;
+            margin-left: 0%;
+            
+            
+            ul li{
+                list-style-type: none;
+                margin-top: 15px;
+                height: 50px;
+            }
+
+            .btnAdd{
+                width: 50%;
+            }
+
+            .ulink{
+                list-style-type: disc;
+            }
+            .mlink{
+                
+                font-size: 20px;
+                width: 40px;
+                height: 30px;
+            }
+        }
+
+        .addmember{
+            .btnAdd{
+                width: 60%;
+            }
+            li{
+                list-style-type: none;
+            }
+        }
+
+        .managemember{
+          
+          li{
+              list-style-type: none;
+              height: 30px;
+          }
+          .btnadmin{
+            float: right;
+          }
+      }
+    }
+
+}
+
+
+/* Login */
+.login{
+    h1{
+        text-align: center;
+        font-size: 4em;
+        margin-top: 10rem;
+    }
+
+    input{
+        margin-bottom: 30px;
+    }
+}
+/* Login */
+.signup{
+  h1{
+      text-align: center;
+      font-size: 4em;
+      margin-top: 8rem;
+  }
+
+  input{
+      margin-bottom: 27px;
+  }
+}
+/* newworkspace */
+.new_workspace{
+  h1{
+      text-align: center;
+      font-size: 4em;
+      margin-top: 10rem;
+  }
+
+  input{
+      margin-bottom: 30px;
+  }
+}
+
+
+/* newworkspace */
+.searchworkspace{
+  h1{
+      text-align: center;
+      font-size: 4em;
+      margin-top: 10rem;
+  }
+
+  input{
+      margin-bottom: 30px;
+  }
+}
+
+/* Member */
+.mpage{
+  h1{
+      text-align: center;
+      font-size: 3em;
+      margin-top: 10rem;
+  }
+  span{
+    font-weight: bold;
+  }
+  input{
+      margin-bottom: 30px;
+  }
+}
+
+
+/* Channel Create */
+.new_channel{
+  h1{
+      text-align: center;
+      font-size: 4em;
+      margin-top: 10rem;
+  }
+
+  input{
+      margin-bottom: 30px;
+  }
+}
+.wframe{
+    margin-top: 10em;
+    .btnW{
+        margin-top: 40px;
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+
+
+
+/* Welcome*/
+
+.welcome{
+
+    h3{
+      text-align: left;
+      margin-right: 30px;
+    }
+    
+    p{
+      position: absolute;
+      top: 8px;
+      right: 16px;
+    }
+    body{
+      background-color: none;
+    }
+    h1{
+      text-align: center;
+      font-size: 40px;
+      padding-bottom: 40px;
+    }
+    
+    div{
+      text-align: center;
+      border:1px solid gray;
+      height: 300px;
+      width: 50%;
+      padding-top: 30px;
+      margin-left: 26%;
+      background: rgb(197, 218,230);
+      border-radius: 10px;
+      margin-top:70px;
+    }
+    
+  }
+  
+
+  /* universal */
+
+  @mixin box_sizing {
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:         border-box;
+  }
+  
+/*memberlist1*/
+.memberlist{
+  padding-top: 60px;
+  .list1{
+    ul{
+      li{
+        list-style-type: none;
+        margin: 10px;
+        
+      }
+    }
+  }
+  
+  .membername{
+    text-align: right;
+    padding: 17px;
+    
+    
+  }
+  .memberadd{
+    text-align: left;
+    margin-right: 130px;
+    padding: 10px;
+  }
+  
+  
+  .button {
+    background-color: gainsboro; 
+    border: 1px solid rgb(23, 3, 41);
+    text-align: center;
+    text-decoration: none;
+  font-size: 20px;
+  color: black;
+    border-radius: 5px;
+    height: 30px;
+    width: 40px;
+    
+  }
+}
+
+/*member invite back home page*/
+.invitesuccess{
+  padding-top: 60px;
+.backhome{
+  text-align: center;
+  margin-left: 26%;
+  margin-top: 7%;
+  width: 50%;
+  height: 300px;
+  padding-top: 50px;
+  border: 1px solid gray;
+  background: rgb(197, 218, 230);
+  border-radius: 10px;
+  
+}
+}
+
+/*member invite*/
+.memberinvite{
+  padding-top: 70px;
+  text-align: center;
+  
+  .formgp{
+    width: 40%;
+    margin-left: 30%;
+    text-align: center;
+  }
+  .invite{
+    padding: 20px;
+    width: 70%;
+    height: 75%;
+    
+  }
+  .emailform{
+    text-align: left;
+  }
+  
+
+}
+
+  /*channel create */
+.channel_create{
+    h1{
+        text-align: center;
+        font-size: 4em;
+        margin-top: 10rem;
+    }
+
+    input{
+        margin-bottom: 30px;
+    }
+}
+
+/*direct*/
+.dir{
+  list-style-type: none;
+}
+#thread {
+  display: none;
+  height: 500px;
+}
+
+
+
+.ui-autocomplete {
+  
+  width: 60%;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 9999;
+  border-radius: 4px;
+  box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.4);
+  li{
+    border: 1px solid rgb(201, 197, 197);
+    border-radius: 5px;
+  }
+}
+

@@ -1,0 +1,76 @@
+
+    <div class="row bd">
+        <div class="col-xs-3 col-sm-3 col-md-3 hleft">
+            <%= render 'listed/left_panel' %>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 member">
+            
+                <header class="row">
+                    <div class="col-xs-10 col-sm-10 col-md-10">
+                        <h3><%= "Thread" %></h3>
+                    </div>
+                </header>
+
+            <div class="row dframe">
+                <br>  
+                    <h4><%= "Direct" %></h4> 
+                    <ul>
+                    <% @dirorigin.each do |origin|%>
+                        <li>
+                            <b><%= origin.user_name %></b>
+                             <%= (origin.created_at).strftime('%B %d %Y, %l:%M%P') %> 
+                            </br>
+                            <%= origin.message %>
+                                <ul>
+                                
+                                <% @thread_msg_array.each do |th_msg|%>
+                                    <% if origin.id == th_msg.dir_msg_id %>
+                                    <li>
+                                        <b><%= th_msg.user_name %></b>
+                                         <%= (th_msg.created_at).strftime('%B %d %Y, %l:%M%P') %> 
+                                        </br>
+                                        <%= th_msg.thread_msg %>
+                                    </li>
+                                    <% end %>
+                                <% end %>
+                                
+                                </ul>
+                            
+                        </li>    
+                    <% end %>
+                    </ul> 
+                    <br>  
+                    <h4><%= "Channel" %> </h4> 
+                    <ul>
+                    <% @parent_user.each do |parent|%>
+                        <li>
+                            <b><%= parent.user_name %></b>
+                             <%= (parent.created_at).strftime('%B %d %Y, %l:%M%P') %> 
+                            </br>
+                            <%= parent.channel_msg %>
+                                <ul>
+                                <% @thread_user.each do |th_user|%>
+                                    <% if parent.id == th_user.parent_msg_id %>
+                                    <li>
+                                        <b><%= th_user.user_name %></b>
+                                         <%= (th_user.created_at).strftime('%B %d %Y, %l:%M%P') %> 
+                                        </br>
+                                        <%= th_user.thread_msg %>
+                                    </li>
+                                    <% end %>
+                                <% end %>
+                                
+                                
+                                </ul>
+                            
+                        </li>    
+                    <% end %>
+                    </ul> 
+            </div>
+                
+
+        </div> 
+        
+    </div>
+
+

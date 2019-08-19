@@ -1,0 +1,33 @@
+
+    <div class="row bd">
+    <div class="col-xs-3 col-sm-3 col-md-3 hleft">
+        <%= render 'listed/left_panel' %>
+    </div>
+    <div class="col-xs-9 col-sm-9 col-md-9 member">
+        
+            <header class="row">
+                <div class="col-xs-10 col-sm-10 col-md-10">
+                    <h3><%= "Mention" %></h3>
+                </div>
+            </header>
+
+        <div class="dframe">
+            <br> 
+                <ul>
+                <% @mention.each do |mention|%>
+                    <li>
+                        <b><%= mention.user_name %></b>
+                         <%= (mention.created_at).strftime('%B %d %Y, %l:%M%P') %>
+                        </br>
+                        <%= mention.channel_msg %>
+                    </li>    
+                <% end %>
+                </ul> 
+        </div>
+            
+
+    </div> 
+    
+</div>
+
+

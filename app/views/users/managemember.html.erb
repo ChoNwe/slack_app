@@ -1,0 +1,56 @@
+    <div class="row bd">
+        <div class="col-xs-3 col-sm-3 col-md-3 hleft">
+            <%= render 'listed/left_panel' %>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 member">
+
+            
+                <header class="row">
+                    <div class="col-xs-10 col-sm-10 col-md-10">
+                        <h3>Manage Member</h3>
+                    </div>
+                </header>
+                <div class="row dframe">
+                    <br> 
+                        <ul class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
+                            <li><h4><%= label :name, "Name" %></h4> </li><br>
+                            <% @muser.each do |muser|%>  
+                                <div class="row managemember"> 
+                                <li>
+                                    <div class="col-xs-3 col-sm-3 col-md-3">
+                                       <%= muser.user_name %> 
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3">
+                                        <% if @admin.map(&:user_id).include? muser.id %>            
+                                            <%=  "Admin " %>
+                                            <div class="btn-group dropright ml-2 mt-5 mm btnadmin">
+                                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                                    <span class="caret"></span></button>
+                                                    <ul class="dropdown-menu str">
+                                                    <%= link_to "Change to User ",user_url(:user_id => muser.id),method: :patch, data: {confirm: "You sure?"} %>
+                                            
+                                                    </ul>
+                                            </div> 
+                                        <% else %> 
+                                            <%= "User" %> 
+                                            <div class="btn-group dropright ml-2 mt-5 mm btnadmin">
+                                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                                    <span class="caret"></span></button>
+                                                    <ul class="dropdown-menu str">
+                                                    <%= link_to "Change to admin ",admin_url(:user_id => muser.id),method: :patch, data: {confirm: "You sure?"} %>
+                                                    
+                                                    </ul>
+                                            </div> 
+                                        <% end %> 
+                                    </div>                 
+                                </li>
+                                </div><br>
+                            <% end %>
+                            </ul>
+
+                   
+                </div>
+        </div> 
+    </div>
+
+

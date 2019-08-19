@@ -1,0 +1,2 @@
+class TMention < ApplicationRecord
+end

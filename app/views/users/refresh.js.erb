@@ -1,0 +1,14 @@
+$('#refreshdiv').html("<%= j(render 'listed/left_panel', data: @public_channel) %>");
+$('#refreshdiv').html("<%= j(render 'listed/left_panel', data: @mchannel) %>");
+$('#refreshdiv').html("<%= j(render 'listed/left_panel', data: @channel_count) %>");
+$('#refreshdiv').html("<%= j(render 'listed/left_panel', data: @muser) %>");
+$('#refreshdiv').html("<%= j(render 'listed/left_panel', data: @dir_count) %>");
+
+
+$('#refreshmessage').html("<%= j(render 'listed/refreshmsg', data: @dir_msg_all) %>");
+$('#refreshmessage').html("<%= j(render 'listed/refreshmsg', data: @dir_msg_sent) %>");
+$('#refreshmessage').html("<%= j(render 'listed/refreshmsg', data: @t_dirstarids) %>");
+
+$('#channelrefresh').html("<%= j(render 'listed/channelrefresh', data: @channel_msg) %>");
+$('#channelrefresh').html("<%= j(render 'listed/channelrefresh', data: @t_chastarids) %>");
+

@@ -1,0 +1,126 @@
+<div class="details" id="refreshdiv">
+    <div class="dropdown btnDrop">
+        <div class="dropdown-toggle wlink" data-toggle="dropdown">
+            <div class="row">
+                <div class="col-xs-9 col-sm-9 col-md-10">
+                    <span class="wname">
+                        <%= session[:workspace_name] %>
+                        <br>
+                        <%= session[:muser_name] %>
+                    </span>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-2"> <b class="caret"></b></div>
+            </div>
+        </div>
+        <ul class="dropdown-menu dropdown-menu-left">
+              <% unless @check_admin[0].nil? %>
+                <% if @check_admin[0].admin %>
+                    <li><%= link_to "Manage Member", managemember_path, class: "alink" %></li>
+                <% end %>
+              <% end %>
+              <li><%= link_to "SignIn other workspace", workspacecreate_path, class: "alink" %></li>
+              <li>
+                <%= link_to "Sign Out", destroy_url, class: "alink" %>
+              </li>
+        </ul>
+    </div>
+    
+    <hr>
+    
+    <%= link_to "Thread", threadselect_path, class: "thread alink" %><br>
+    
+   
+    <%= link_to "Unread", unread_path, class: "unread alink" %>&nbsp
+    <% if (@all_ch_un_count+@all_dir_un_count) > 0%>
+        <span class="badge bmsg"><%= (@all_ch_un_count+@all_dir_un_count) %></span>
+    <% end %>  <br>   
+    <div class="row">
+        <div class="col-xs-9 col-sm-9 col-md-9">
+            <span class="mention">Mention</span>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3">
+        <%= link_to "", mention_path, class: "fa fa-at btnms iplus alink" %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-9 col-sm-9 col-md-9">
+            <span class="star">Star</span>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3">
+        <%= link_to "", star_url, class: "fa fa-star star btnms iplus alink" %>
+        </div>
+    </div>
+
+    
+ 
+
+    <div class="channel">
+        <h3>Channel<%= link_to "", chchannel_path, class: "fa fa-plus alink iplus" %></h3>
+        <ul class="list-group">
+
+        <% @public_channel.each do |public_channel|%>
+            <li class="row">
+            <span class="col-xs-9 col-sm-9 col-md-9 name">
+            <%=link_to '#'+public_channel.channel_name,channelchat_url(:chid => public_channel.id) ,class: "alink" %>
+            <% @channel_count.each do |count|%>
+                <% if public_channel.id==count.channel_id%> 
+                <span class="badge bmsg"><%= count.count%></span>
+                <% end %>
+            <% end %>
+            </span>
+            <span class="col-xs-3 col-sm-3 col-md-3">
+            <% unless @check_admin[0].nil? %>
+                <% if @check_admin[0].admin %>
+                <%= link_to '',removechannel_url(:chid => public_channel.id),method: :delete,data: {confirm: "You sure?"},:class=> "fa fa-minus btnchdel" %>
+                <% end %>
+            <% end %>
+            </span>
+            </li>
+        <% end %>
+
+        <% @mchannel.each do |mchannel| %>
+            <li class="row">
+            <span class="col-xs-9 col-sm-9 col-md-9 name">
+            <%=link_to '#'+mchannel.channel_name,channelchat_url(:chid => mchannel.id) ,class: "alink" %>
+            <% @channel_count.each do |count|%>
+                <% if mchannel.id==count.channel_id%> 
+                <span class="badge bmsg"><%= count.count%></span>
+                <% end %>
+            <% end %>
+            </span>
+            <span class="col-xs-3 col-sm-3 col-md-3">
+            <% unless @check_admin[0].nil? %>
+                <% if @check_admin[0].admin %>
+                <%= link_to '',removechannel_url(:chid => mchannel.id),method: :delete,data: {confirm: "You sure?"},:class=> "fa fa-minus btnchdel" %>
+                <% end %>
+            <% end %>
+            </span>
+            </li>
+        <% end %>
+        </ul>
+    </div>
+
+    <div class="memberlist2" id="userlist">
+        <h3>Member List</h3>
+        <ul class="list-group">
+          
+        <% @muser.each do |muser|%>
+            <li id="usercount" class="mname name">
+            <%= link_to muser.user_name, dirchat_url(:id => muser.id), class: "alink"   %>         
+                <% @dir_count.each do |count|%>
+                    <% if muser.user_name==count.user_name%> 
+                    <span class="badge bmsg"><%= count.count%></span>              
+                <% end %>
+                    
+            <% end %>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+
+    <div class="dmemberinvite">
+        <h3>Member Invite<%= link_to "", memberinvite_path, class: "fa fa-plus alink iplus" %></h3>
+    </div>
+
+</div>
+
